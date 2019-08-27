@@ -42,27 +42,23 @@ public class CountingSort {
         int max = A.get(0); //pega o primeiro elemento de A pra comparar
         for (int i = 1; i < comprimento; i++) { //inicializa em 1 pois o max já tem o primeiro elemento a ser comparado
          if (A.get(i) > max) //se A[i] for maior que o max, ele passa a ser o max
-        	 A.set(i, A.get(i));
+        	 max = A.get(i);
         }
       
         //System.out.println("Max: "+ max );
             
-        for(int juju = 0; juju<comprimento;juju++)   
-         System.out.println("Vetor:" + vetorAux[juju]);
         //3ª parte: Ordena o array auxiliar (que atualmente se encontra apenas com as frequências) do menor para o maior    
         for(int i = 1; i < max+1 ; i++){
          
         //a partir do índice 1, soma o elemento posterior com o anterior e e coloca no índice correspondente       
          vetorAux[i] = vetorAux[i] + vetorAux[i-1];
-         
-    
-        
+     
         }
         
         //4ª parte:
-      //  for(int j = 0; j < comprimento; j--){
-            ///vetorOrd[vetorAux[A[j]]] = A[j];
-        //}
+        for(int j = 0; j < comprimento; j--){
+            vetorOrd[vetorAux[A[j]]] = A[j];
+        }
     
       }
     
