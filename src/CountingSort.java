@@ -48,44 +48,44 @@ public class CountingSort {
         //System.out.println("Max: "+ max );
             
         //3ª parte: Ordena o array auxiliar (que atualmente se encontra apenas com as frequências) do menor para o maior    
-        for(int i = 1; i < max+1 ; i++){
-         
+        for(int i = 1; i <= max ; i++){
+   
         //a partir do índice 1, soma o elemento posterior com o anterior e e coloca no índice correspondente       
          vetorAux[i] = vetorAux[i] + vetorAux[i-1];
-     
-        }
         
-        //4ª parte:
-        for(int j = 0; j < comprimento; j--){
-            vetorOrd[vetorAux[A[j]]] = A[j];
-        }
+         }
+        //for(int juju = 0; juju<comprimento;juju++)
+            //System.out.println(vetorAux[juju]);
+        
     
-      }
-    
-    
-    static  ArrayList<Integer> lista = new ArrayList<>();
-//Ler arquivo e adicionar na lista
-     static ArrayList<Integer> arquivo(String arq) throws FileNotFoundException {
-       
-         Scanner ler = null;
-        ler = new Scanner(new File(arq));
-        while (ler.hasNext()) {
-            lista.add(ler.nextInt());
-        }
-        ler.close();
-        return lista;
+        //4ª parte: Ordena
+        for(int j = comprimento-1; j >= 0; j--){
+   
+            vetorOrd[vetorAux[A.get(j)]-1] = A.get(j);//pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
+            vetorAux[A.get(j)] = vetorAux[A.get(j)] - 1; //decrementa a posição que foi usada do vetorAux       
+        }   
     }
     
+        //Lê o arquivo e coloca os elementos na "lista"
+        static  ArrayList<Integer> lista = new ArrayList<>();
+        static ArrayList<Integer> arquivo(String arq) throws FileNotFoundException {
+
+            Scanner ler = null;
+           ler = new Scanner(new File(arq));
+           while (ler.hasNext()) {
+               lista.add(ler.nextInt());
+           }
+           ler.close();
+           return lista;
+       }
     
-    
-    
+  
    public static void main(String args[]) throws FileNotFoundException 
     { 
-         arquivo("src/aaa.in");
-        
-         CountingSort hehe = new CountingSort(); 
-        
-  
+        //Abre o arquivo
+        arquivo("src/aaa.in");
+         
+        CountingSort hehe = new CountingSort(); 
         hehe.Ordena(lista); 
    
     } 
