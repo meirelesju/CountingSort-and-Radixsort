@@ -15,28 +15,40 @@ import java.util.Scanner;
  */
 public class CountingSort {
    
-    public static void Ordena(int[] A){
-        
-        
-         //Minimo
-        int min = A[0]; //pega o primeiro elemento de A pra comparar
-        for (int i = 1; i < A.length; i++) { //inicializa em 1 pois o max já tem o primeiro elemento a ser comparado
+    
+    
+     //Minimo
+   static int min(int []A){    
+    
+    int comprimento = A.length;
+    int min = A[0]; //pega o primeiro elemento de A pra comparar
+        for (int i = 1; i < comprimento; i++) { //inicializa em 1 pois o max já tem o primeiro elemento a ser comparado
          
             if (A[i] < min) //se A[i] for maior que o min, ele passa a ser o max
            min = A[i];
         }
+        return min;
        
-        
+}
+   
+   static int max(int [] A){
         //Maximo
          int max = A[0]; //pega o primeiro elemento de A pra comparar
             for (int i = 1; i < A.length; i++) { //inicializa em 1 pois o max já tem o primeiro elemento a ser comparado
              if (A[i] > max) //se A[i] for maior que o max, ele passa a ser o max
                      max = A[i];
             }
+            return max;
+   }
+    
+    
+    
+    
+    
+    public static void Ordena(int[] A){
         
-         
         int comprimento = A.length;    
-        int intervalo = max - min + 1; 
+        int intervalo = max(A) - min(A) + 1; 
         int vetorAux[] = new int[intervalo]; 
         int vetorOrd[] = new int[A.length]; 
         
@@ -54,7 +66,7 @@ public class CountingSort {
              ele "empurra" as frequências de números positivos para a frente (quantidade de casas equivalente ao numero minimo)  
             */
             
-            vetorAux[A[j] - min] = vetorAux[A[j] - min] + 1 ;  
+            vetorAux[A[j] - min(A)] = vetorAux[A[j] - min(A)] + 1 ;  
             
             
         } 
@@ -74,8 +86,8 @@ public class CountingSort {
          //4ª parte: Ordena
         for (int j = comprimento - 1; j >= 0; j--){   
         
-            vetorOrd[vetorAux[A[j] - min] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
-          vetorAux[A[j]- min] = vetorAux[A[j]- min] - 1; //decrementa a posição que foi usada do vetorAux   
+            vetorOrd[vetorAux[A[j] - min(A)] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
+          vetorAux[A[j]- min(A)] = vetorAux[A[j]- min(A)] - 1; //decrementa a posição que foi usada do vetorAux   
         
         } 
   
@@ -85,42 +97,14 @@ public class CountingSort {
                     
             
         //6ª parte: Printa
-            for(int juju = 0; juju<comprimento;juju++)
-            System.out.println(A[juju]);
+            
+          // for(int juju = 0; juju<comprimento;juju++)
+          //System.out.println(A[juju]);
         
     } 
   
    
-    //Ler o arquivo e armazenar os valores
-    static  ArrayList<Integer> lista = new ArrayList<>();
-        
-        static ArrayList<Integer> arquivo(String arq) throws FileNotFoundException {
-
-            Scanner ler = null;
-           ler = new Scanner(new File(arq));
-           while (ler.hasNext()) {
-               lista.add(ler.nextInt());
-           }
-           ler.close();
-           return lista;
-       }
-  
     
-    public static void main(String[] args) throws FileNotFoundException 
-    { 
-       
-        
-        arquivo("src/num.1000.1.in");
-        
-        //colocando os elementos de Lista num array pra melhor visualização na função CountingSort
-        int A[] = new int [lista.size()];
-           for(int i = 0; i<lista.size();i++){
-               A[i]=lista.get(i);
-           }
-        
-        Ordena(A); 
-        
-    } 
 }  
  
 
