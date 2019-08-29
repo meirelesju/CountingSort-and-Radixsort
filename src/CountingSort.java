@@ -45,7 +45,7 @@ public class CountingSort {
     
     
     
-    public static void Ordena(int[] A, int posicao){
+    public static void Ordena(int[] A, int decimal){
         
         int comprimento  = A.length;
         int intervalo = max(A) - min(A) + 1; 
@@ -61,7 +61,7 @@ public class CountingSort {
         for(int j = 0; j < comprimento; ++j){  
    
             //"retorna" o elem mais a esquerda como o radix pede
-            int elem_mais_a_esquerda = ((A[j]/posicao)%10);
+            int elem_mais_a_esquerda = ((A[j]/decimal)%10);
             
             /*perceba que o elem_mais_a_esquerda está subtraindo com o valor mínimo pois agora que também existem
              números negativos no array,
@@ -86,7 +86,7 @@ public class CountingSort {
         for (int j = comprimento - 1; j >= 0; j--){   
         
             
-            int elem_mais_a_esquerda = ((A[j]/posicao)%10);
+            int elem_mais_a_esquerda = ((A[j]/decimal)%10);
             
             vetorOrd[vetorAux[elem_mais_a_esquerda - min(A)] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
             vetorAux[elem_mais_a_esquerda - min(A)] = vetorAux[elem_mais_a_esquerda - min(A)] - 1; //decrementa a posição que foi usada do vetorAux   
