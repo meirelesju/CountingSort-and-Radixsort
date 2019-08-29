@@ -33,3 +33,53 @@ Usando como entrada A = {2, 5, 3, 0, 2, 3, 0, 3, -1}:
 
 ![exemplo1](https://user-images.githubusercontent.com/32073212/63956982-ebe60380-ca5d-11e9-83b4-5a39baa251bb.png)
 
+
+## Radix Sort
+
+O Radix Sort é um algoritmo que ordena vetores de inteiros, onde ele opera sobre os dígitos de cada elemento sempre começando pelo dígito menos significativo (dígito mais à direita).
+
+### Algoritmo
+
+```
+Algorithm Radix-Sort(A,n,d)
+1: for i = 1 to d do
+2: ORDENE(A, n, i);
+3: end for
+```
+Note que ele usa o ORDENE, que nada mais é que o próprio CountingSort com poucas modificações.
+Ou seja, ele dá *CountingSort* para cada dígito dos elementos do vetor inicial.
+
+### Problemas encontrados
+
+Como então saber sobre qual dígito ele deve operar e qual seu limite?
+
+Em java, o maior int de 32 bits é **2147483647**, ou seja, na casa do bilhão. Então, o limite dos dígitos das entradas é na casa do **bilhão** (1.000.000.000).
+
+* No código trabalhado neste repositório, ele vai pegar o elemento inicial (**3** por exemplo) 
+* Dividir o elemento inicial pelo *i* que está sendo trabalhado atualmente (se estivermos na casa das dezenas, vai se tornar **0,3**) 
+```
+No for do algoritmo, o "i" diz em qual "casa" estamos trabalhando atualmente 
+            (unidades, dezenas, centenas, milhares, etc) 
+```
+ * Pegar o elemento mais à direita (o **3**) e executar o resto do código com ele.
+
+Note que os números com apenas uma casa decimal serão preenchidos com zeros à esquerda para que o algoritmo opere corretamente.
+
+Com isto, garantimos que o CountingSort vai operar sobre todas as casas existentes.  
+
+## Autores
+
+* **Julianny Meireles** - *All work* - [Meirelesju](https://github.com/meirelesju)
+
+
+## Licença
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Referências
+
+* Slides fornecidos pelo professor 
+* Counting Sort - [Wikipédia](https://pt.wikipedia.org/wiki/Counting_sort)
+* Radix Sort - [Wikipédia](https://pt.wikipedia.org/wiki/Radix_sort)
+
+
