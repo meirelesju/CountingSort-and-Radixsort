@@ -19,22 +19,26 @@ class RadixSort extends CountingSort{
     static void RadixSort(int A[]) 
     { 
         CountingSort counting = new CountingSort();
-        int comprimento = A.length;
-        // Encontra o menor valor de A
+       
+        // Pega o menor valor de A
         int min = min(A); 
   
-        //inicializa no 1 pois é a primeira casa decimal a ser "analizada"
-        //a quanidade de iterações varia de acordo com a quantidade de casas que o número max do array de entrada possui
-        for (int i = 1; min/i > 0; i *= 10) 
-            System.out.println("i ="+i);
-            Ordena(A);
+        //O maior tamanho de int que existe em java é na casa do bilhão
+        int maiorInt = 1000000000;
         
-        //printar
+        //inicializa no 1 pois é a primeira casa decimal a ser "analizada"
+        //o for vai percorrer todas as casas dos elementos e dar countingSort em cada uma delas
+        for (int i = 1; i <maiorInt; i *= 10) {
+          
+            Ordena(A, i);
+        }
+       
+        
+    } 
+        static void print(int []A, int comprimento){
         for(int j = 0; j<comprimento;j++)
             System.out.println(A[j]);
-    } 
-  
-   
+        }
   
     //Ler o arquivo e armazenar os valores
     static  ArrayList<Integer> lista = new ArrayList<>();
@@ -59,8 +63,9 @@ class RadixSort extends CountingSort{
            for(int i = 0; i<lista.size();i++){
                A[i]=lista.get(i);
            } 
+         int comprimento = A.length;
         
-        RadixSort(A); 
-         
+         RadixSort(A); 
+         print(A, comprimento);
     } 
 } 

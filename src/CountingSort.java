@@ -45,9 +45,9 @@ public class CountingSort {
     
     
     
-    public static void Ordena(int[] A){
+    public static void Ordena(int[] A, int posicao){
         
-        int comprimento = A.length;    
+        int comprimento  = A.length;
         int intervalo = max(A) - min(A) + 1; 
         int vetorAux[] = new int[intervalo]; 
         int vetorOrd[] = new int[A.length]; 
@@ -60,18 +60,18 @@ public class CountingSort {
         //2ª parte: Conta as frequências dos elementos do array principal e coloca no array auxiliar
         for(int j = 0; j < comprimento; ++j){  
    
+            //"retorna" o elem mais a esquerda como o radix pede
+            int elem_mais_a_esquerda = ((A[j]/posicao)%10);
             
-           /*perceba que o A[j] está subtraindo com o valor mínimo pois agora que também existem
-             números negativos no array;
+            /*perceba que o elem_mais_a_esquerda está subtraindo com o valor mínimo pois agora que também existem
+             números negativos no array,
              ele "empurra" as frequências de números positivos para a frente (quantidade de casas equivalente ao numero minimo)  
             */
-            
-            vetorAux[A[j] - min(A)] = vetorAux[A[j] - min(A)] + 1 ;  
+            vetorAux[ elem_mais_a_esquerda - min(A)] = vetorAux[elem_mais_a_esquerda - min(A)] + 1 ;  
             
             
         } 
         
-         
         
         //3ª parte: Ordena o array auxiliar (que atualmente se encontra apenas com as frequências)
         for (int i = 1; i < intervalo; i++){   
@@ -80,14 +80,16 @@ public class CountingSort {
             vetorAux[i] = vetorAux[i] + vetorAux[i-1];
             
         } 
-            
-      
+          
         
          //4ª parte: Ordena
         for (int j = comprimento - 1; j >= 0; j--){   
         
-            vetorOrd[vetorAux[A[j] - min(A)] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
-          vetorAux[A[j]- min(A)] = vetorAux[A[j]- min(A)] - 1; //decrementa a posição que foi usada do vetorAux   
+           
+            int elem_mais_a_esquerda = ((A[j]/posicao)%10);
+            
+            vetorOrd[vetorAux[elem_mais_a_esquerda - min(A)] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
+            vetorAux[elem_mais_a_esquerda - min(A)] = vetorAux[elem_mais_a_esquerda - min(A)] - 1; //decrementa a posição que foi usada do vetorAux   
         
         } 
   
@@ -102,9 +104,4 @@ public class CountingSort {
           //System.out.println(A[juju]);
         
     } 
-  
-   
-    
-}  
- 
-
+}
