@@ -85,7 +85,7 @@ public class CountingSort {
          //4ª parte: Ordena
         for (int j = comprimento - 1; j >= 0; j--){   
         
-           
+            
             int elem_mais_a_esquerda = ((A[j]/posicao)%10);
             
             vetorOrd[vetorAux[elem_mais_a_esquerda - min(A)] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
