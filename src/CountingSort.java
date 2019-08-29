@@ -97,7 +97,7 @@ public class CountingSort {
             for (int i = 0; i < comprimento; i++)
                 A[i]= vetorOrd[i];
                     
-            
+             
         //6ª parte: Printa
             
           // for(int juju = 0; juju<comprimento;juju++)
