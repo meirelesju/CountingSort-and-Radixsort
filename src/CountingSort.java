@@ -60,14 +60,14 @@ public class CountingSort {
         //2ª parte: Conta as frequências dos elementos do array principal e coloca no array auxiliar
         for(int j = 0; j < comprimento; ++j){  
    
-            //"retorna" o elem mais a esquerda como o radix pede
-            int elem_mais_a_esquerda = ((A[j]/decimal)%10);
+            //"retorna" o elem mais a direita como o radix pede
+            int elem_mais_a_direita = ((A[j]/decimal)%10);
             
             /*perceba que o elem_mais_a_esquerda está subtraindo com o valor mínimo pois agora que também existem
              números negativos no array,
              ele "empurra" as frequências de números positivos para a frente (quantidade de casas equivalente ao numero minimo)  
             */
-            vetorAux[ elem_mais_a_esquerda - min(A)] = vetorAux[elem_mais_a_esquerda - min(A)] + 1 ;  
+            vetorAux[ elem_mais_a_direita - min(A)] = vetorAux[elem_mais_a_direita - min(A)] + 1 ;  
             
             
         } 
@@ -86,10 +86,10 @@ public class CountingSort {
         for (int j = comprimento - 1; j >= 0; j--){   
         
             
-            int elem_mais_a_esquerda = ((A[j]/decimal)%10);
+            int elem_mais_a_direita = ((A[j]/decimal)%10);
             
-            vetorOrd[vetorAux[elem_mais_a_esquerda - min(A)] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
-            vetorAux[elem_mais_a_esquerda - min(A)] = vetorAux[elem_mais_a_esquerda - min(A)] - 1; //decrementa a posição que foi usada do vetorAux   
+            vetorOrd[vetorAux[elem_mais_a_direita - min(A)] - 1] = A[j]; //pega os elementos de A e coloca em vetorOrdenado(de trás pra frente)
+            vetorAux[elem_mais_a_direita - min(A)] = vetorAux[elem_mais_a_direita - min(A)] - 1; //decrementa a posição que foi usada do vetorAux   
         
         } 
   
