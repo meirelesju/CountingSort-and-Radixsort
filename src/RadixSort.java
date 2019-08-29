@@ -19,10 +19,7 @@ class RadixSort extends CountingSort{
     static void RadixSort(int A[]) 
     { 
         CountingSort counting = new CountingSort();
-       
-        // Pega o menor valor de A
-        int min = min(A); 
-  
+
         //O maior tamanho de int que existe em java é na casa do bilhão
         int maiorInt = 1000000000;
         
