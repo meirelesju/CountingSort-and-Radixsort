@@ -31,3 +31,5 @@ Uma maneira encontrada para corrigir esse problema foi "empurrar" as frequência
 
 Usando como entrada A = {2, 5, 3, 0, 2, 3, 0, 3, -1}:
 
+![exemplo1](https://user-images.githubusercontent.com/32073212/63956982-ebe60380-ca5d-11e9-83b4-5a39baa251bb.png)
+
